@@ -1,0 +1,953 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WinRT.Triggers</name>
+    </assembly>
+    <members>
+        <member name="T:WinRT.Triggers.AssociatableElement">
+            <summary>
+            A <see cref="T:Windows.UI.Xaml.FrameworkElement"/> that can be associated to a <see cref="T:Windows.UI.Xaml.FrameworkElement"/>
+            at runtime.
+            </summary>
+        </member>
+        <member name="T:WinRT.Triggers.IAssociatableElement">
+            <summary>
+            Describes an object that can be associated to another <see cref="T:Windows.UI.Xaml.FrameworkElement"/>.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.IAssociatableElement.Attach(Windows.UI.Xaml.FrameworkElement)">
+            <summary>
+            Attaches a <see cref="T:Windows.UI.Xaml.FrameworkElement"/> to this instance.
+            </summary>
+            <param name="obj">
+            The <see cref="T:Windows.UI.Xaml.FrameworkElement"/> to attach to this instance.
+            </param>
+        </member>
+        <member name="M:WinRT.Triggers.IAssociatableElement.Detach">
+            <summary>
+            Detaches the currently associated <see cref="T:Windows.UI.Xaml.FrameworkElement"/>.
+            </summary>
+        </member>
+        <member name="P:WinRT.Triggers.IAssociatableElement.AssociatedObject">
+            <summary>
+            Gets the instance of the <see cref="T:Windows.UI.Xaml.FrameworkElement"/> currently attached to this instance.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.AssociatableElement.Attach(Windows.UI.Xaml.FrameworkElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.AssociatableElement.Detach">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.AssociatableElement.AssociatedPropertyChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Handles the property value changing on a dependency property of type <see cref="T:WinRT.Triggers.IAssociatableElement"/>
+            that is associated to an object that also implements <see cref="T:WinRT.Triggers.IAssociatableElement"/>.
+            </summary>
+            <param name="d">
+            The <see cref="T:Windows.UI.Xaml.DependencyObject"/> the property changed on.
+            </param>
+            <param name="e">
+            The <see cref="T:Windows.UI.Xaml.DependencyPropertyChangedEventArgs"/> containing the event arguments.
+            </param>
+        </member>
+        <member name="M:WinRT.Triggers.AssociatableElement.OnAssociatedObjectLoaded(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Called when the associated object is loaded. This is responsible for
+            the magic that allows the binding of the <see cref="P:Windows.UI.Xaml.FrameworkElement.DataContext"/> from
+            the associated object to this <see cref="T:WinRT.Triggers.AssociatableElement"/> instance.
+            </summary>
+            <param name="sender">
+            The sender of the event - this will be a <see cref="T:Windows.UI.Xaml.FrameworkElement"/>.
+            </param>
+            <param name="e">
+            The <see cref="T:Windows.UI.Xaml.RoutedEventArgs"/> instance containing the event arguments.
+            </param>
+        </member>
+        <member name="P:WinRT.Triggers.AssociatableElement.AssociatedObject">
+            <inheritdoc />
+        </member>
+        <member name="T:WinRT.Triggers.AttachableCollection`1">
+            <summary>
+            Implements a collection of attachable objects that can be attached to a <see cref="T:Windows.UI.Xaml.FrameworkElement"/>.
+            </summary>
+            <remarks>
+            The inner list is lazily initialized to allow for these collections to be constructed relatively cheaply
+            even if they are never actually populated.
+            </remarks>
+            <typeparam name="T">
+            The type of the elements stored in the collection. Must inherit from <see cref="T:Windows.UI.Xaml.FrameworkElement"/> and implement
+            <see cref="T:WinRT.Triggers.IAssociatableElement"/>.
+            </typeparam>
+        </member>
+        <member name="F:WinRT.Triggers.AttachableCollection`1.items">
+            <summary>
+            The lazily initialized collection of items.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WinRT.Triggers.AttachableCollection`1"/> class.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.Add(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.Attach(Windows.UI.Xaml.FrameworkElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.Clear">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.Contains(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.CopyTo(`0[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.Detach">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.IndexOf(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.Insert(System.Int32,`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.Remove(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.RemoveAt(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.ItemAdded(`0)">
+            <summary>
+            Called whenever an item is added into the collection. This will pass down the currently 
+            associated object if one is currently set on this collection.
+            </summary>
+            <param name="item">
+            The added item.
+            </param>
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.ItemRemoved(`0)">
+            <summary>
+            Called whenever an item is removed from the collection. This will detach the currently
+            associated object from the item if one is currently set.
+            </summary>
+            <param name="item">
+            The removed item.
+            </param>
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.OnAttached">
+            <summary>
+            Called when the collection is attached to an object. This will automatically
+            attach the associated object to any contained items.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged"/> event on this instance.
+            </summary>
+            <param name="args">
+            The <see cref="T:System.Collections.Specialized.NotifyCollectionChangedEventArgs"/> containing the event arguments.
+            </param>
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.OnDetached">
+            <summary>
+            Called when the collection is detached from an object. This automatically detaches
+            any contained items as well.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.InitializeItemsCollection">
+            <summary>
+            Lazily initialized the items collection.
+            </summary>
+            <returns>
+            The created collection.
+            </returns>
+        </member>
+        <member name="M:WinRT.Triggers.AttachableCollection`1.ItemsCollectionChanged(System.Object,System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Handles the <see cref="E:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged"/> event of the inner list.
+            </summary>
+            <param name="sender">
+            The source of the event.
+            </param>
+            <param name="e">
+            The <see cref="T:System.Collections.Specialized.NotifyCollectionChangedEventArgs"/> containing the event arguments.
+            </param>
+        </member>
+        <member name="E:WinRT.Triggers.AttachableCollection`1.CollectionChanged">
+            <summary>
+            Notifies changes in the collection
+            </summary>
+        </member>
+        <member name="P:WinRT.Triggers.AttachableCollection`1.AssociatedObject">
+            <inheritdoc />
+        </member>
+        <member name="P:WinRT.Triggers.AttachableCollection`1.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:WinRT.Triggers.AttachableCollection`1.IsReadOnly">
+            <inheritdoc />
+        </member>
+        <member name="P:WinRT.Triggers.AttachableCollection`1.Items">
+            <summary>
+            Gets the items associated to this instance.
+            </summary>
+        </member>
+        <member name="P:WinRT.Triggers.AttachableCollection`1.Item(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="T:WinRT.Triggers.BoundTrigger">
+            <summary>
+            A trigger that is bound to some value.
+            </summary>
+        </member>
+        <member name="T:WinRT.Triggers.Trigger">
+            <summary>
+            The base class for all triggers.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.Trigger.TriggerActionsProperty">
+            <summary>
+            Defines the TriggerAction dependency property, of type <see cref="T:WinRT.Triggers.AttachableCollection`1"/>.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.Trigger.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WinRT.Triggers.Trigger"/> class. 
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.Trigger.Attach(Windows.UI.Xaml.FrameworkElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.Trigger.Detach">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.Trigger.OnTriggered(System.Object)">
+            <summary>
+            Called when the trigger is fired.
+            </summary>
+            <param name="eventData">
+            The optional data associated to the event that caused the
+            trigger to be fired.
+            </param>
+        </member>
+        <member name="P:WinRT.Triggers.Trigger.TriggerActions">
+            <summary>
+            Gets or sets the collection of <see cref="T:WinRT.Triggers.TriggerAction"/>s to invoke when the trigger is fired.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.BoundTrigger.BindingProperty">
+            <summary>
+            The Binding dependency property of type <see cref="T:System.Object"/>.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.BoundTrigger.OnBindingValueChanged(System.Object,System.Object)">
+            <summary>
+            Called when the value associated to the bound property changes value.
+            </summary>
+            <param name="oldValue">
+            The old value.
+            </param>
+            <param name="newValue">
+            The new value.
+            </param>
+        </member>
+        <member name="M:WinRT.Triggers.BoundTrigger.BindingValueChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Handles the event raised by the <see cref="F:WinRT.Triggers.BoundTrigger.BindingProperty"/> when its value changes.
+            </summary>
+            <param name="d">
+            The <see cref="T:Windows.UI.Xaml.DependencyObject"/> the property changed on.
+            </param>
+            <param name="e">
+            The <see cref="T:Windows.UI.Xaml.DependencyPropertyChangedEventArgs"/> containing the event arguments.
+            </param>
+        </member>
+        <member name="P:WinRT.Triggers.BoundTrigger.Binding">
+            <summary>
+            Gets or sets the binding that the trigger watches for changes on.
+            </summary>
+        </member>
+        <member name="T:WinRT.Triggers.ConditionOperator">
+            <summary>
+            The various conditions that can be applied to an <see cref="T:WinRT.Triggers.Condition"/>
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.ConditionOperator.Equals">
+            <summary>
+            The left and right operands must be equal.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.ConditionOperator.NotEquals">
+            <summary>
+            The left and right operands must not be equal.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.ConditionOperator.GreaterThan">
+            <summary>
+            The left operand must be greater than the right operand.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.ConditionOperator.LessThan">
+            <summary>
+            The left operand must be less than the right operand.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.ConditionOperator.GreaterThanOrEqual">
+            <summary>
+            The left operand must be greater than or equal to the right operand.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.ConditionOperator.LessThanOrEqual">
+            <summary>
+            The left operand must be less than or equal to the right operand.
+            </summary>
+        </member>
+        <member name="T:WinRT.Triggers.Condition">
+            <summary>
+            A condition that can be configured on a <see cref="T:WinRT.Triggers.TriggerAction"/> that must evaluate to <c>true</c>
+            in order for the action to be invoked.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.Condition.OperatorProperty">
+            <summary>
+            The Operator dependency property of type <see cref="T:WinRT.Triggers.ConditionOperator"/>.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.Condition.LeftOperandProperty">
+            <summary>
+            The LeftOperand dependency property of type <see cref="T:System.Object"/>.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.Condition.RightOperandProperty">
+            <summary>
+            The RightOperand dependency property of type <see cref="T:System.Object"/>.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.Condition.EvaluateCondition">
+            <summary>
+            Tests the configured condition and returns the result.
+            </summary>
+            <returns>
+            The result of the configured condition.
+            </returns>
+        </member>
+        <member name="P:WinRT.Triggers.Condition.Operator">
+            <summary>
+            Gets or sets the <see cref="T:WinRT.Triggers.ConditionOperator"/> that will be used as the operator
+            in the conditional statement.
+            </summary>
+        </member>
+        <member name="P:WinRT.Triggers.Condition.LeftOperand">
+            <summary>
+            Gets or sets the left operand of the statement.
+            </summary>
+        </member>
+        <member name="P:WinRT.Triggers.Condition.RightOperand">
+            <summary>
+            Gets or sets the right operand of the statement.
+            </summary>
+        </member>
+        <member name="T:WinRT.Triggers.ControlStoryboardAction">
+            <summary>
+            The control storyboard action.
+            </summary>
+        </member>
+        <member name="T:WinRT.Triggers.TriggerAction">
+            <summary>
+            An action that is invoked in response to a <see cref="T:WinRT.Triggers.Trigger"/> firing.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.TriggerAction.ConditionsProperty">
+            <summary>
+            The Conditions dependency property of type <see cref="T:WinRT.Triggers.AttachableCollection`1"/>.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.TriggerAction.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WinRT.Triggers.TriggerAction"/> class. 
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.TriggerAction.Invoke(System.Object)">
+            <summary>
+            Tests all the conditions associated to the action and if they all pass then invokes the action.
+            </summary>
+            <param name="eventData">
+            The event data associated to the event that triggered the action.
+            </param>
+        </member>
+        <member name="M:WinRT.Triggers.TriggerAction.Attach(Windows.UI.Xaml.FrameworkElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.TriggerAction.Detach">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.TriggerAction.DoInvoke(System.Object)">
+            <summary>
+            Invokes the action.
+            </summary>
+            <param name="eventData">
+            The event data associated to the event that triggered the action.
+            </param>
+        </member>
+        <member name="P:WinRT.Triggers.TriggerAction.Conditions">
+            <summary>
+            Gets or sets the collection of <see cref="T:WinRT.Triggers.Condition"/>s associated to this instance.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.ControlStoryboardAction.ActionProperty">
+            <summary>
+            The Action dependency property of type <see cref="T:WinRT.Triggers.StoryboardAction"/>.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.ControlStoryboardAction.StoryboardProperty">
+            <summary>
+            The Storyboard dependency property of type <see cref="P:WinRT.Triggers.ControlStoryboardAction.Storyboard"/>.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.ControlStoryboardAction.DoInvoke(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="P:WinRT.Triggers.ControlStoryboardAction.Action">
+            <summary>
+            Gets or sets the action to invoke on the <see cref="P:WinRT.Triggers.ControlStoryboardAction.Storyboard"/>.
+            </summary>
+        </member>
+        <member name="P:WinRT.Triggers.ControlStoryboardAction.Storyboard">
+            <summary>
+            Gets or sets the associated <see cref="P:WinRT.Triggers.ControlStoryboardAction.Storyboard"/>.
+            </summary>
+        </member>
+        <member name="T:WinRT.Triggers.CustomVisualStateManager">
+            <summary>
+            The custom visual state manager.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.CustomVisualStateManager.instance">
+            <summary>
+            The custom visual state manager instance.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.CustomVisualStateManager.GoToState(Windows.UI.Xaml.FrameworkElement,System.String)">
+            <summary>
+            Transitions the framework element, or its nearest parent control with a state of the required name,
+            to a new state.
+            </summary>
+            <param name="frameworkElement">
+            The framework element the state change was triggered from.
+            </param>
+            <param name="stateName">
+            The name of the visual state to transition to.
+            </param>
+        </member>
+        <member name="M:WinRT.Triggers.CustomVisualStateManager.LocateVisualState(Windows.UI.Xaml.FrameworkElement,System.String)">
+            <summary>
+            Locates the visual state with the given name, relative to the given framework element.
+            </summary>
+            <param name="frameworkElement">
+            The framework element at which to start searching for the visual state.
+            </param>
+            <param name="stateName">
+            The name of the visual state to search for.
+            </param>
+            <returns>
+            The located visual state information.
+            </returns>
+        </member>
+        <member name="T:WinRT.Triggers.CustomVisualStateManager.VisualStateInfo">
+            <summary>
+            Information about a matched <see cref="P:WinRT.Triggers.CustomVisualStateManager.VisualStateInfo.VisualState"/>, including its container
+            <see cref="P:WinRT.Triggers.CustomVisualStateManager.VisualStateInfo.VisualStateGroup"/> and associated <see cref="P:WinRT.Triggers.CustomVisualStateManager.VisualStateInfo.Control"/>.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.CustomVisualStateManager.VisualStateInfo.#ctor(Windows.UI.Xaml.FrameworkElement,Windows.UI.Xaml.VisualStateGroup,Windows.UI.Xaml.VisualState)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WinRT.Triggers.CustomVisualStateManager.VisualStateInfo"/> class.
+            </summary>
+            <param name="frameworkElement">
+            The framework element.
+            </param>
+            <param name="group">
+            The group.
+            </param>
+            <param name="visualState">
+            The visual state.
+            </param>
+        </member>
+        <member name="P:WinRT.Triggers.CustomVisualStateManager.VisualStateInfo.Control">
+            <summary>
+            Gets or sets the associated control.
+            </summary>
+        </member>
+        <member name="P:WinRT.Triggers.CustomVisualStateManager.VisualStateInfo.FrameworkElement">
+            <summary>
+            Gets the framework element the visual state group was located on.
+            </summary>
+        </member>
+        <member name="P:WinRT.Triggers.CustomVisualStateManager.VisualStateInfo.VisualState">
+            <summary>
+            Gets the matched visual state.
+            </summary>
+        </member>
+        <member name="P:WinRT.Triggers.CustomVisualStateManager.VisualStateInfo.VisualStateGroup">
+            <summary>
+            Gets the visual state group the visual state is contained in.
+            </summary>
+        </member>
+        <member name="T:WinRT.Triggers.SetPropertyAction">
+            <summary>
+            An action that sets a property on an object when it is fired.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.SetPropertyAction.PropertyNameProperty">
+            <summary>
+            The PropertyName dependency property of type <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.SetPropertyAction.TargetProperty">
+            <summary>
+            The Target dependency property of type <see cref="T:System.Object"/>.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.SetPropertyAction.ValueProperty">
+            <summary>
+            The Value dependency property of type <see cref="T:System.Object"/>.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.SetPropertyAction.targetObjectPropertyInfo">
+            <summary>
+            The property information for the named property on the target object type.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.SetPropertyAction.associatedElementPropertyInfo">
+            <summary>
+            The property information for the named property on the attached element.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.SetPropertyAction.DoInvoke(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.SetPropertyAction.TargetPropertyChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Handles the event raised by the <see cref="F:WinRT.Triggers.SetPropertyAction.TargetProperty"/> and <see cref="F:WinRT.Triggers.SetPropertyAction.PropertyNameProperty"/> when their values change.
+            </summary>
+            <param name="d">
+            The <see cref="T:Windows.UI.Xaml.DependencyObject"/> the property changed on.
+            </param>
+            <param name="e">
+            The <see cref="T:Windows.UI.Xaml.DependencyPropertyChangedEventArgs"/> containing the event arguments.
+            </param>
+        </member>
+        <member name="P:WinRT.Triggers.SetPropertyAction.PropertyName">
+            <summary>
+            Gets or sets the name of the property to set the value on.
+            </summary>
+        </member>
+        <member name="P:WinRT.Triggers.SetPropertyAction.Target">
+            <summary>
+            Gets or sets the target object to set the property on.
+            </summary>
+        </member>
+        <member name="P:WinRT.Triggers.SetPropertyAction.Value">
+            <summary>
+            Gets or sets the value to store on associated object when fired.
+            </summary>
+        </member>
+        <member name="T:WinRT.Triggers.EventHookingTrigger">
+            <summary>
+            A trigger that needs to hook into an even on an associated object, which when fired will
+            invoke the trigging process.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.EventHookingTrigger.hookedEvent">
+            <summary>
+            The hooked event.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.EventHookingTrigger.GetEventTarget(System.Object)">
+            <summary>
+            Gets the object the event is exposed on.
+            </summary>
+            <param name="sourceObject">
+            The source object to use - if this is null then the currently associated
+            object will be used.
+            </param>
+            <returns>
+            The event target.
+            </returns>
+        </member>
+        <member name="M:WinRT.Triggers.EventHookingTrigger.HookEvent(System.String,System.Object)">
+            <summary>
+            Hooks a named event on the source object.
+            </summary>
+            <param name="eventName">
+            The name of the event.
+            </param>
+            <param name="sourceObject">
+            The source object that exposes the event - if this is null then the
+            currently associated object will be used.
+            </param>
+        </member>
+        <member name="M:WinRT.Triggers.EventHookingTrigger.UnhookEvent(System.Object)">
+            <summary>
+            Unhooks the currently hooked event.
+            </summary>
+            <param name="sourceObject">
+            The source object to use - if this is null then the currently associated
+            object will be used.
+            </param>
+        </member>
+        <member name="T:WinRT.Triggers.EventHookingTrigger.EventHooker">
+            <summary>
+            A helper class capable of wrapping an arbitrary event handler on a <see cref="T:Windows.UI.Xaml.FrameworkElement"/>.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.EventHookingTrigger.EventHooker.binding">
+            <summary>
+            The <see cref="T:WinRT.Triggers.EventTrigger"/> that owns this instance
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.EventHookingTrigger.EventHooker.eventInfo">
+            <summary>
+            The current event information.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.EventHookingTrigger.EventHooker.eventRegistrationToken">
+            <summary>
+            The WinRT event registration token - used when the event is a WinRT event.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.EventHookingTrigger.EventHooker.handler">
+            <summary>
+            The handler attached to the event.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.EventHookingTrigger.EventHooker.#ctor(WinRT.Triggers.EventHookingTrigger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WinRT.Triggers.EventHookingTrigger.EventHooker"/> class. 
+            Initializes the instance of the class
+            </summary>
+            <param name="binding">
+            The <see cref="T:WinRT.Triggers.EventTrigger"/> that owns this instance.
+            </param>
+        </member>
+        <member name="M:WinRT.Triggers.EventHookingTrigger.EventHooker.HookEvent(System.Object,System.String)">
+            <summary>
+            Adds a hooks into the associated object for the event with the given name.
+            </summary>
+            <param name="obj">
+            The object to attach the event to.
+            </param>
+            <param name="eventName">
+            The name of the event to hook into.
+            </param>
+        </member>
+        <member name="M:WinRT.Triggers.EventHookingTrigger.EventHooker.UnhookEvent(System.Object)">
+            <summary>
+            Removes a hook from the associated object for the event with the given name.
+            </summary>
+            <param name="obj">
+            The object to detach the event from.
+            </param>
+        </member>
+        <member name="M:WinRT.Triggers.EventHookingTrigger.EventHooker.GetEventInfo(System.Type,System.String)">
+            <summary>
+            Gets <see cref="T:System.Reflection.EventInfo"/> information about the specified event name of the provided type.
+            </summary>
+            <param name="type">
+            The type that the event should be found on.
+            </param>
+            <param name="eventName">
+            The name of the event to get the information for.
+            </param>
+            <returns>
+            Instance of <see cref="T:System.Reflection.EventInfo"/> representing the named event.
+            </returns>
+        </member>
+        <member name="M:WinRT.Triggers.EventHookingTrigger.EventHooker.GetEventHandler(System.Reflection.EventInfo)">
+            <summary>
+            Create an instance of a delegate able to handle the provided event
+            </summary>
+            <param name="eventInfo">
+            Information about the event to create the delegate
+            </param>
+            <returns>
+            The <see cref="T:System.Delegate"/>.
+            </returns>
+        </member>
+        <member name="M:WinRT.Triggers.EventHookingTrigger.EventHooker.OnEventRaised(System.Object,System.Object)">
+            <summary>
+            This method is hooked, via reflection, to a named event. It is responsible for 
+            triggering the 
+            </summary>
+            <param name="sender">
+            source of the event
+            </param>
+            <param name="e">
+            arguments of the event
+            </param>
+        </member>
+        <member name="T:WinRT.Triggers.StoryboardCompletedTrigger">
+            <summary>
+                A <see cref="T:WinRT.Triggers.Trigger"/> that is fired whenever a storyboard completes.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.StoryboardCompletedTrigger.StoryboardProperty">
+            <summary>
+            The Storyboard dependency property of type <see cref="P:WinRT.Triggers.StoryboardCompletedTrigger.Storyboard"/>.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.StoryboardCompletedTrigger.StoryboardPropertyChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Handles the event raised by the <see cref="F:WinRT.Triggers.StoryboardCompletedTrigger.StoryboardProperty"/> when its value changes.
+            </summary>
+            <param name="d">
+            The <see cref="T:Windows.UI.Xaml.DependencyObject"/> the property changed on.
+            </param>
+            <param name="e">
+            The <see cref="T:Windows.UI.Xaml.DependencyPropertyChangedEventArgs"/> containing the event arguments.
+            </param>
+        </member>
+        <member name="P:WinRT.Triggers.StoryboardCompletedTrigger.Storyboard">
+            <summary>
+            Gets or sets the storyboard to wait for the completion event on.
+            </summary>
+        </member>
+        <member name="T:WinRT.Triggers.StoryboardAction">
+            <summary>
+            The various <see cref="T:Windows.UI.Xaml.Media.Animation.Storyboard"/> actions that can be invoked by the <see cref="T:WinRT.Triggers.ControlStoryboardAction"/> class.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.StoryboardAction.Start">
+            <summary>
+            Start (or re-start) the <see cref="T:Windows.UI.Xaml.Media.Animation.Storyboard"/>.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.StoryboardAction.Pause">
+            <summary>
+            Pause the <see cref="T:Windows.UI.Xaml.Media.Animation.Storyboard"/>.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.StoryboardAction.Stop">
+            <summary>
+            Stop the <see cref="T:Windows.UI.Xaml.Media.Animation.Storyboard"/>.
+            </summary>
+        </member>
+        <member name="T:WinRT.Triggers.EventTrigger">
+            <summary>
+            A <see cref="T:WinRT.Triggers.Trigger"/> that responds to an event on the associated <see cref="T:Windows.UI.Xaml.FrameworkElement"/>.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.EventTrigger.EventNameProperty">
+            <summary>
+            The EventName dependency property of type <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.EventTrigger.SourceObjectProperty">
+            <summary>
+            The SourceObject property of type <see cref="T:System.Object"/>. If this is unset or set to null then the <see cref="T:Windows.UI.Xaml.FrameworkElement"/> 
+            that the trigger is attached to will be treated as the source object.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.EventTrigger.Attach(Windows.UI.Xaml.FrameworkElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.EventTrigger.Detach">
+            <inheritdoc />
+        </member>
+        <member name="M:WinRT.Triggers.EventTrigger.SourceObjectPropertyChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Called when the <see cref="P:WinRT.Triggers.EventTrigger.SourceObject"/> property changes.
+            </summary>
+            <param name="d">
+            The dependency object associated to the raised event.
+            </param>
+            <param name="e">
+            The event arguments.
+            </param>
+        </member>
+        <member name="P:WinRT.Triggers.EventTrigger.EventName">
+            <summary>
+            Gets or sets the name of the event that the trigger should respond to.
+            </summary>
+        </member>
+        <member name="P:WinRT.Triggers.EventTrigger.SourceObject">
+            <summary>
+            Gets or sets the source object that the event is defined on. If this is null 
+            then the <see cref="T:Windows.UI.Xaml.FrameworkElement"/> that the trigger is attached to will be 
+            treated as the source object.
+            </summary>
+        </member>
+        <member name="T:WinRT.Triggers.GotoStateAction">
+            <summary>
+            An action that changes the current state associated to the <see cref="T:Windows.UI.Xaml.VisualStateManager"/>.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.GotoStateAction.StateNameProperty">
+            <summary>
+            The StateName dependency property of type <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.GotoStateAction.DoInvoke(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="P:WinRT.Triggers.GotoStateAction.StateName">
+            <summary>
+            Gets or sets the name of the state to change to when the action is invoked.
+            </summary>
+        </member>
+        <member name="T:WinRT.Triggers.Interactions">
+            <summary>
+            The entry point for the XAML - exposes the <see cref="F:WinRT.Triggers.Interactions.TriggersProperty"/> attached property.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.Interactions.TriggersProperty">
+            <summary>
+            Defines the Triggers attached property, of type <see cref="T:WinRT.Triggers.TriggerCollection"/>.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.Interactions.GetTriggers(Windows.UI.Xaml.DependencyObject)">
+            <summary>
+            Gets the value of the <see cref="F:WinRT.Triggers.Interactions.TriggersProperty"/> attached property.
+            </summary>
+            <param name="dependencyObject">
+            The dependency object for which to get the value.
+            </param>
+            <returns>
+            The <see cref="T:WinRT.Triggers.TriggerCollection"/> associated to the given object.
+            </returns>
+        </member>
+        <member name="M:WinRT.Triggers.Interactions.SetTriggers(Windows.UI.Xaml.DependencyObject,WinRT.Triggers.TriggerCollection)">
+            <summary>
+            Sets the value of the Triggers attached property
+            </summary>
+            <param name="dependencyObject">
+            dependency object to set the value
+            </param>
+            <param name="value">
+            Instance of the command collection
+            </param>
+        </member>
+        <member name="M:WinRT.Triggers.Interactions.OnCommandsChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Handles the changing of the Commands property.
+            </summary>
+            <param name="dependencyObject">
+            The event source.
+            </param>
+            <param name="e">
+            The <see cref="T:Windows.UI.Xaml.DependencyPropertyChangedEventArgs"/> containing the event arguments.
+            </param>
+        </member>
+        <member name="T:WinRT.Triggers.InvokeCommandAction">
+            <summary>
+            An action capable of invoking an <see cref="T:System.Windows.Input.ICommand"/> in response to a trigger.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.InvokeCommandAction.CommandParameterProperty">
+            <summary>
+            Defines the CommandParameter dependency property, of type <see cref="T:System.Object"/>.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.InvokeCommandAction.CommandProperty">
+            <summary>
+            Defines the Command dependency property, of type <see cref="T:System.Windows.Input.ICommand"/>.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.InvokeCommandAction.PassEventArgsToCommandProperty">
+            <summary>
+            Defines the Command dependency property, of type <see cref="P:WinRT.Triggers.InvokeCommandAction.PassEventArgsToCommand"/>.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.InvokeCommandAction.DoInvoke(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="P:WinRT.Triggers.InvokeCommandAction.Command">
+            <summary>
+            Gets or sets the command to be invoked.
+            </summary>
+        </member>
+        <member name="P:WinRT.Triggers.InvokeCommandAction.CommandParameter">
+            <summary>
+            Gets or sets the command parameter to pass to the <see cref="T:System.Windows.Input.ICommand"/> upon invocation.
+            </summary>
+            <remarks>
+            This takes precedence over the <see cref="P:WinRT.Triggers.InvokeCommandAction.PassEventArgsToCommand"/> property - if <see cref="P:WinRT.Triggers.InvokeCommandAction.CommandParameter"/>
+            is specified, then <see cref="P:WinRT.Triggers.InvokeCommandAction.PassEventArgsToCommand"/> is ignored.
+            </remarks>
+        </member>
+        <member name="P:WinRT.Triggers.InvokeCommandAction.PassEventArgsToCommand">
+            <summary>
+            Gets or sets a value indicating whether or not the event arguments associated to the raised
+            event should be passed to the command.
+            </summary>
+        </member>
+        <member name="T:WinRT.Triggers.PropertyChangedTrigger">
+            <summary>
+            A <see cref="T:WinRT.Triggers.Trigger"/> that is fired whenever a property value changes.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.PropertyChangedTrigger.OnBindingValueChanged(System.Object,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="T:WinRT.Triggers.PropertySetTrigger">
+            <summary>
+            A <see cref="T:WinRT.Triggers.Trigger"/> much like <see cref="T:WinRT.Triggers.PropertyChangedTrigger"/>, except this implementation
+            only fires when the property is set to a specific value.
+            </summary>
+        </member>
+        <member name="F:WinRT.Triggers.PropertySetTrigger.RequiredValueProperty">
+            <summary>
+            Defines the RequiredValue dependency property, of type <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.PropertySetTrigger.OnBindingValueChanged(System.Object,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="P:WinRT.Triggers.PropertySetTrigger.RequiredValue">
+            <summary>
+            Gets or sets the expected value that must be met for the state change to occur.
+            </summary>
+        </member>
+        <member name="T:WinRT.Triggers.TriggerCollection">
+            <summary>
+            Represents a collection of <see cref="T:WinRT.Triggers.Trigger"/>s.
+            </summary>
+        </member>
+        <member name="T:WinRT.Triggers.ValueComparer">
+            <summary>
+            The value comparer helper code.
+            </summary>
+        </member>
+        <member name="M:WinRT.Triggers.ValueComparer.Compare(System.Object,WinRT.Triggers.ConditionOperator,System.Object)">
+            <summary>
+            Compares a left and right operand with respect to a given operator.
+            </summary>
+            <param name="leftOperand">
+            The left operand.
+            </param>
+            <param name="conditionOperator">
+            The condition operator.
+            </param>
+            <param name="rightOperand">
+            The right operand.
+            </param>
+            <returns>
+            <c>true</c> if the result of comparing the two values is <c>true</c> with respect to the 
+            operator, otherwise <c>false</c>.
+            </returns>
+            <exception cref="T:System.InvalidOperationException">
+            Thrown when the two operators can't be compared.
+            </exception>
+        </member>
+    </members>
+</doc>
