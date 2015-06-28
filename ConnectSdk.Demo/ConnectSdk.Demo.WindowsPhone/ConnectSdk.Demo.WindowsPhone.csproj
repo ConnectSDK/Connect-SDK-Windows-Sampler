@@ -120,9 +120,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="ConnectSdk.Windows">
-      <HintPath>..\..\packages\ConnectSdk.Windows\ConnectSdk.Windows.dll</HintPath>
-    </Reference>
     <Reference Include="UpdateControls">
       <HintPath>..\..\packages\UpdateControls.2.3.1.0\lib\wpa81\UpdateControls.dll</HintPath>
     </Reference>
@@ -135,6 +132,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Connect-SDK-Windows\ConnectSdk.Windows.csproj">
+      <Project>{cc946aff-1338-4a99-8bfa-3d028bdb1e38}</Project>
+      <Name>ConnectSdk.Windows</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
