@@ -6,18 +6,14 @@ For more information, visit our [website](http://www.connectsdk.com/).
 * [General information about Connect SDK](http://www.connectsdk.com/discover/)
 
 ##Setup
-* Clone the repository Connect-Sdk-Windows-Sampler
-* Clone the Connect-Sdk-Windows repository at the same level as the sampler
+* Clone the [Connect-Sdk-Windows-Sampler](https://github.com/ConnectSDK/Connect-SDK-Windows-Sampler) repository
+* Clone the [Connect-Sdk-Windows](https://github.com/ConnectSDK/Connect-SDK-Windows) repository at the same level as the sampler
 * Build
 * Setup ConnectSdk.Demo.Windows as startup project if you want to run the windows app or the 
 ConnectSdk.Demo.WindowsPhone if you want to run the app on the phone
 
 ##Contact
-* Twitter [@ConnectSDK](https://www.twitter.com/ConnectSDK)
-* Ask a question with the "tv" tag on [Stack Overflow](http://stackoverflow.com/tags/tv)
-* General Inquiries info@connectsdk.com
-* Developer Support support@connectsdk.com
-* Partnerships partners@connectsdk.com
+* Add any issues [here](https://github.com/ConnectSDK/Connect-SDK-Windows-Sampler/issues)
 
 ##License
 Copyright (c) 2015, [SDaemon](https://github.com/sdaemon).
